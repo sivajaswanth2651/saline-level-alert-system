@@ -1,0 +1,32 @@
+#include <Servo.h>
+Servo myservo; 
+int sensor = 0;
+int pos=0; 
+ 
+void setup()
+{ 
+  pinMode(4, INPUT);  
+  pinMode(12,OUTPUT); 
+  Serial.begin(9600); 
+  myservo.attach(2);  
+} 
+ 
+void loop() { 
+  sensor = digitalRead(4);   
+  Serial.println(sensor);   
+  if (sensor == 0) 
+  { 
+    digitalWrite(12, HIGH); 
+    for (pos = 0; pos <= 150; pos += 1) 
+  {  
+   myservo.write(pos); 
+  delay(500);           
+}   
+if (sensor == 1) 
+  { 
+ 
+    digitalWrite(12, LOW); 
+  }   delay(10); 
+   
+  } } 
+
